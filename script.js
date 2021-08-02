@@ -155,3 +155,12 @@ winBut.addEventListener("click", () => {
 clearBut.addEventListener("click", () => {
   storeData.removeData();
 });
+
+winBut.addEventListener("touchstart", () => {
+  game.computeScore("p2", undefined, 29, true);
+  display.renderData();
+});
+
+clearBut.addEventListener("touchstart", () => {
+  storeData.removeData();
+});

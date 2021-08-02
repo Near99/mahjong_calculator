@@ -1,0 +1,27 @@
+html {
+  background-color: cadetblue;
+}
+
+.container {
+  display: flex;
+  flex-flow: column;
+  border: 2px solid black;
+  height: 30%;
+}
+
+.container > div {
+  font-size: 100px;
+  border: 2px solid black;
+}
+
+.winBut {
+  font-size: 100px;
+  height: 300px;
+  width: 500px;
+}
+
+.clearData {
+  font-size: 100px;
+  height: 300px;
+  width: 500px;
+}

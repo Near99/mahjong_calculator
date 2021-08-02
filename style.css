@@ -74,8 +74,38 @@ html {
 .win {
   display: flex;
   flex-flow: column;
+  align-items: center;
+}
+
+.win > input,
+select {
+  width: 90%;
+  height: 30px;
+  border: none;
+}
+
+.win > label {
+  padding: 10px;
 }
 
 .inactive {
   visibility: visible;
+}
+
+button {
+  margin-top: 15px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+}
+
+.resetContainer {
+  display: flex;
+  padding-top: 150px;
+  justify-content: center;
+}
+
+.reset {
+  background-color: red;
+  color: #ffffff;
 }

@@ -16,16 +16,19 @@ html {
   margin: 0;
   padding: 0;
   position: relative;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  padding-bottom: 30px;
   /*perspective: 20px;*/
 }
 
-.formTitle {
+.rankingFormHeader {
   margin: 0;
   text-align: center;
   outline: 0;
   border: 10px solid #f7f7f7;
   width: 100%;
-  /* left: -10%; */
   position: relative;
   top: 10px;
   z-index: 2;
@@ -43,6 +46,7 @@ html {
   padding: 20px;
   transition: background 0.2s;
   display: flex;
+  width: 90%;
   justify-content: space-between;
   text-transform: capitalize;
 }
@@ -61,4 +65,17 @@ html {
   background-color: #ffc600;
   padding: 3px;
   border-radius: 50%;
+}
+
+.formController {
+  padding-top: 20px;
+}
+
+.win {
+  display: flex;
+  flex-flow: column;
+}
+
+.inactive {
+  visibility: visible;
 }

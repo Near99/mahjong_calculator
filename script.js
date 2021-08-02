@@ -125,42 +125,47 @@ const game = {
 };
 
 const display = {
-  playerContainer: document.querySelectorAll("[data-player]"),
+  playerRanking: document.querySelector(".ranking"),
   renderData() {
-    game.playerInfo.forEach((player, index) => {
-      this.playerContainer[index].innerHTML = `
-      Name: ${player.name} 
-      Score: ${player.score} 
-      Win: ${player.win} 
-      Self Draw: ${player.self} 
-      Discard Given: ${player.disCardGiven}`;
-    });
+    const uls = game.playerInfo
+      .map((player, index) => {
+        return `
+      <li>
+      <span class="indexBar">${index + 1}st</span>
+      <span>${player.name}</span>
+      <span>${player.score}</span>
+      </li>
+      `;
+      })
+      .join("");
+    this.playerRanking.innerHTML = uls;
   },
+};
+
+const winDeclaration = () => {
+  const winForm = document.querySelector(".win");
+
+  winForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const self = Object.values(winForm)[0].checked;
+    const discard = Object.values(winForm)[1].checked;
+    const winner = Object.values(winForm)[2].value;
+    const loser = Object.values(winForm)[3].value;
+    const fan = Number(Object.values(winForm)[4].value);
+    if (self === discard) return;
+    if (winner === loser) return;
+    if (self) {
+      game.computeScore(winner, undefined, fan, self);
+    }
+    if (discard) {
+      game.computeScore(winner, loser, fan, discard);
+    }
+    display.renderData();
+  });
 };
 
 window.addEventListener("DOMContentLoaded", () => {
   storeData.getData();
-  // console.table(game.playerInfo);
-  // display.renderData();
+  display.renderData();
+  winDeclaration();
 });
-
-// const winBut = document.querySelector(".winBut");
-// const clearBut = document.querySelector(".clearData");
-
-// winBut.addEventListener("click", () => {
-//   game.computeScore("p2", undefined, 29, true);
-//   // display.renderData();
-// });
-
-// clearBut.addEventListener("click", () => {
-//   storeData.removeData();
-// });
-
-// winBut.addEventListener("touchstart", () => {
-//   game.computeScore("p2", undefined, 29, true);
-//   // display.renderData();
-// });
-
-// clearBut.addEventListener("touchstart", () => {
-//   storeData.removeData();
-// });

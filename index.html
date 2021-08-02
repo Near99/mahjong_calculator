@@ -9,31 +9,37 @@
   </head>
   <body>
     <form>
-      <div class="formTitle">Current Ranking</div>
-      <ul class="ranking">
-        <li>
-          <span class="indexBar">01</span>
-          <span>Charles</span>
-          <span>333</span>
-        </li>
-        <li>
-          <span class="indexBar">02</span>
-          <span>Nick</span>
-          <span>111</span>
-        </li>
-        <li>
-          <span class="indexBar">03</span>
-          <span>Ben</span>
-          <span>-333</span>
-        </li>
-        <li>
-          <span class="indexBar">04</span>
-          <span>Grace</span>
-          <span>-333</span>
-        </li>
-      </ul>
+      <div class="rankingFormHeader">Current Ranking</div>
+      <ul class="ranking"></ul>
     </form>
 
+    <form action="" class="win">
+      <div class="rankingFormHeader">Win Declaration</div>
+      <div class="formController">
+        <label for="self">Self</label>
+        <input id="self" type="checkbox" />
+        <label for="discard">From Discard</label>
+        <input id="discard" type="checkbox" />
+      </div>
+      <label for="winner">Choose Winner</label>
+      <select id="winner" name="winner">
+        <option value="p1">Kaixing</option>
+        <option value="p2">Wenwen</option>
+        <option value="p3">Manman</option>
+        <option value="p4">Yuhao</option>
+      </select>
+      <label for="loser" class="inactive">Choose Loser</label>
+      <select id="loser" name="loser" class="inactive">
+        <option value="p1">Kaixing</option>
+        <option value="p2">Wenwen</option>
+        <option value="p3">Manman</option>
+        <option value="p4">Yuhao</option>
+        <option value="self">Self</option>
+      </select>
+      <label for="fan">Enter Fan</label>
+      <input type="number" id="fan" name="fan" required />
+      <button>Submit</button>
+    </form>
     <script src="script.js"></script>
   </body>
 </html>

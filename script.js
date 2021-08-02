@@ -160,6 +160,7 @@ const winDeclaration = () => {
     if (discard) {
       game.computeScore(winner, loser, fan, discard);
     }
+    Object.values(winForm)[4].value = "";
     display.renderData();
   });
 };

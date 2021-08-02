@@ -140,27 +140,27 @@ const display = {
 
 window.addEventListener("DOMContentLoaded", () => {
   storeData.getData();
-  console.table(game.playerInfo);
-  display.renderData();
+  // console.table(game.playerInfo);
+  // display.renderData();
 });
 
-const winBut = document.querySelector(".winBut");
-const clearBut = document.querySelector(".clearData");
+// const winBut = document.querySelector(".winBut");
+// const clearBut = document.querySelector(".clearData");
 
-winBut.addEventListener("click", () => {
-  game.computeScore("p2", undefined, 29, true);
-  display.renderData();
-});
+// winBut.addEventListener("click", () => {
+//   game.computeScore("p2", undefined, 29, true);
+//   // display.renderData();
+// });
 
-clearBut.addEventListener("click", () => {
-  storeData.removeData();
-});
+// clearBut.addEventListener("click", () => {
+//   storeData.removeData();
+// });
 
-winBut.addEventListener("touchstart", () => {
-  game.computeScore("p2", undefined, 29, true);
-  display.renderData();
-});
+// winBut.addEventListener("touchstart", () => {
+//   game.computeScore("p2", undefined, 29, true);
+//   // display.renderData();
+// });
 
-clearBut.addEventListener("touchstart", () => {
-  storeData.removeData();
-});
+// clearBut.addEventListener("touchstart", () => {
+//   storeData.removeData();
+// });

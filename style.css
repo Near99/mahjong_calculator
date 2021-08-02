@@ -1,27 +1,64 @@
 html {
-  background-color: cadetblue;
+  box-sizing: border-box;
+  background: #ffc600;
+  font-family: "helvetica neue";
+  font-size: 20px;
+  font-weight: 200;
 }
 
-.container {
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+.ranking {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  /*perspective: 20px;*/
+}
+
+.formTitle {
+  margin: 0;
+  text-align: center;
+  outline: 0;
+  border: 10px solid #f7f7f7;
+  width: 100%;
+  /* left: -10%; */
+  position: relative;
+  top: 10px;
+  z-index: 2;
+  border-radius: 5px;
+  font-size: 40px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.12), inset 0 0 2px rgba(0, 0, 0, 0.19);
+}
+
+.ranking li {
+  background: white;
+  list-style: none;
+  border-bottom: 1px solid #d8d8d8;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.14);
+  margin: 0;
+  padding: 20px;
+  transition: background 0.2s;
   display: flex;
-  flex-flow: column;
-  border: 2px solid black;
-  height: 30%;
+  justify-content: space-between;
+  text-transform: capitalize;
 }
 
-.container > div {
-  font-size: 50px;
-  border: 2px solid black;
+.ranking li:nth-child(even) {
+  transform: perspective(100px) rotateX(3deg) translateY(2px) scale(1.001);
+  background: linear-gradient(to bottom, #ffffff 0%, #efefef 100%);
 }
 
-.winBut {
-  font-size: 10px;
-  height: 50px;
-  width: 50px;
+.ranking li:nth-child(odd) {
+  transform: perspective(100px) rotateX(-3deg) translateY(3px);
+  background: linear-gradient(to top, #ffffff 0%, #efefef 100%);
 }
 
-.clearData {
-  font-size: 10px;
-  height: 50px;
-  width: 50px;
+.indexBar {
+  background-color: #ffc600;
+  padding: 3px;
+  border-radius: 50%;
 }

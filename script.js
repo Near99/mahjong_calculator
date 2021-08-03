@@ -62,11 +62,12 @@ const game = {
   ],
 
   errorChecking() {
+    // Throw error if all four players score added not equal to zero.
     const res = this.playerInfo.reduce((accu, player) => {
       return accu + player.score;
     }, 0);
     if (res) {
-      console.log("error");
+      alert(`Something went wrong! ${res}`);
     } else {
       console.log("no error found");
     }
@@ -78,6 +79,7 @@ const game = {
     // sorting
     this.playerInfo.sort((a, b) => (a.score > b.score ? -1 : 1));
     // compute win rate
+    // **incomplete feature
     this.playerInfo.forEach((player) => {
       player.winRate = Math.floor((player.win / this.roundCounter) * 100);
     });
@@ -126,6 +128,7 @@ const game = {
 
 const display = {
   playerRanking: document.querySelector(".ranking"),
+
   renderData() {
     const uls = game.playerInfo
       .map((player, index) => {
@@ -147,20 +150,25 @@ const winDeclaration = () => {
 
   winForm.addEventListener("submit", (e) => {
     e.preventDefault();
+    // get all values from win submit form
     const self = Object.values(winForm)[0].checked;
     const discard = Object.values(winForm)[1].checked;
     const winner = Object.values(winForm)[2].value;
     const loser = Object.values(winForm)[3].value;
     const fan = Number(Object.values(winForm)[4].value);
+    // prevent both self and from discard are checked at the same time.
     if (self === discard) return;
+    // prevent if winner and loser are selected the same.
     if (winner === loser) return;
     if (self) {
-      game.computeScore(winner, undefined, fan, self);
+      game.computeScore(winner, undefined, fan, true);
     }
     if (discard) {
-      game.computeScore(winner, loser, fan, discard);
+      game.computeScore(winner, loser, fan);
     }
+    // prevent submit the same result for more than once
     Object.values(winForm)[4].value = "";
+    // render data
     display.renderData();
   });
 };

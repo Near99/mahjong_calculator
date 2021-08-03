@@ -20,7 +20,6 @@ html {
   flex-flow: column;
   align-items: center;
   padding-bottom: 30px;
-  /*perspective: 20px;*/
 }
 
 .rankingFormHeader {
@@ -94,6 +93,7 @@ select {
 
 button {
   margin-top: 15px;
+  margin-bottom: 15px;
   padding: 10px;
   border: none;
   border-radius: 5px;
@@ -121,4 +121,38 @@ button {
 
 .rank3 {
   background-color: #ffffff;
+}
+
+.content-table {
+  margin: 25px 0;
+  border-collapse: collapse;
+  font-size: 0.7em;
+  min-width: 80%;
+}
+
+.content-table thead tr {
+  /* background-color: #009879; */
+  color: #ffffff;
+  text-align: left;
+  font-weight: bold;
+}
+
+.content-table th,
+.content-table td {
+  padding: 12px 15px;
+  text-transform: capitalize;
+}
+
+.content-table tbody tr {
+  border-bottom: 1px solid #ffffff;
+}
+
+.content-table tbody tr:nth-of-type(even) {
+  transform: perspective(100px) rotateX(3deg) translateY(2px) scale(1.001);
+  background: linear-gradient(to bottom, #ffffff 0%, #efefef 100%);
+}
+
+.content-table tbody tr:nth-of-type(odd) {
+  transform: perspective(100px) rotateX(-3deg) translateY(3px);
+  background: linear-gradient(to top, #ffffff 0%, #efefef 100%);
 }

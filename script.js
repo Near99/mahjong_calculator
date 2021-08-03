@@ -3,6 +3,7 @@ const storeData = {
 
   setData() {
     this.scoresStorage.setItem("scores", JSON.stringify(game.playerInfo));
+    this.scoresStorage.setItem("roundCounter", game.roundCounter);
   },
 
   getData() {
@@ -11,11 +12,21 @@ const storeData = {
     } else {
       game.playerInfo = JSON.parse(this.scoresStorage.getItem("scores"));
     }
+
+    if (!this.scoresStorage.getItem("roundCounter")) {
+      return;
+    } else {
+      game.roundCounter = Number(this.scoresStorage.getItem("roundCounter"));
+    }
   },
 
   removeData() {
     if (JSON.parse(this.scoresStorage.getItem("scores"))) {
       this.scoresStorage.removeItem("scores");
+    }
+
+    if (this.scoresStorage.getItem("roundCounter")) {
+      this.scoresStorage.removeItem("roundCounter");
     }
   },
 };
@@ -128,20 +139,35 @@ const game = {
 
 const display = {
   playerRanking: document.querySelector(".ranking"),
+  tableBody: document.querySelector(".tableBody"),
 
   renderData() {
     const uls = game.playerInfo
       .map((player, index) => {
         return `
-      <li>
-      <span class="indexBar rank${index}" >${index + 1}st</span>
-      <span>${player.name}</span>
-      <span>${player.score}</span>
-      </li>
+       <li>
+        <span class="indexBar rank${index}" >${index + 1}st</span>
+        <span>${player.name}</span>
+        <span>${player.score}</span>
+       </li>
+      `;
+      })
+      .join("");
+    const tabls = game.playerInfo
+      .map((player) => {
+        return `
+        <tr>
+          <td>${player.name}</td>
+          <td>${player.win}</td>
+          <td>${player.winRate}%</td>
+          <td>${player.self}</td>
+          <td>${player.disCardGiven}</td>
+        </tr>
       `;
       })
       .join("");
     this.playerRanking.innerHTML = uls;
+    this.tableBody.innerHTML = tabls;
   },
 };
 
@@ -188,3 +214,30 @@ window.addEventListener("DOMContentLoaded", () => {
   winDeclaration();
   reset();
 });
+
+// const tableBody = `
+//      <tbody>
+
+//         <tr>
+//           <td>Kaixing</td>
+//           <td>3</td>
+//           <td>100%</td>
+//           <td>3</td>
+//           <td>0</td>
+//         </tr>
+//         <tr>
+//           <td>Kaixing</td>
+//           <td>3</td>
+//           <td>100%</td>
+//           <td>3</td>
+//           <td>0</td>
+//         </tr>
+//         <tr>
+//           <td>Kaixing</td>
+//           <td>3</td>
+//           <td>100%</td>
+//           <td>3</td>
+//           <td>0</td>
+//         </tr>
+//       </tbody>
+// `;

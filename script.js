@@ -90,7 +90,6 @@ const game = {
     // sorting
     this.playerInfo.sort((a, b) => (a.score > b.score ? -1 : 1));
     // compute win rate
-    // **incomplete feature
     this.playerInfo.forEach((player) => {
       player.winRate = Math.floor((player.win / this.roundCounter) * 100);
     });
@@ -194,6 +193,11 @@ const winDeclaration = () => {
       if (loser === "self") return;
       game.computeScore(winner, loser, fan);
     }
+    // set checkboxes to be unchecked
+    Object.values(winForm)[0].checked = false;
+    Object.values(winForm)[1].checked = false;
+    // set loser selector to self
+    Object.values(winForm)[3].value = "self";
     // prevent submit the same result for more than once
     Object.values(winForm)[4].value = "";
     // render data

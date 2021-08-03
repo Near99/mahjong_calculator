@@ -153,7 +153,7 @@ const display = {
       `;
       })
       .join("");
-    const tabls = game.playerInfo
+    const tables = game.playerInfo
       .map((player) => {
         return `
         <tr>
@@ -167,7 +167,7 @@ const display = {
       })
       .join("");
     this.playerRanking.innerHTML = uls;
-    this.tableBody.innerHTML = tabls;
+    this.tableBody.innerHTML = tables;
   },
 };
 
@@ -214,30 +214,3 @@ window.addEventListener("DOMContentLoaded", () => {
   winDeclaration();
   reset();
 });
-
-// const tableBody = `
-//      <tbody>
-
-//         <tr>
-//           <td>Kaixing</td>
-//           <td>3</td>
-//           <td>100%</td>
-//           <td>3</td>
-//           <td>0</td>
-//         </tr>
-//         <tr>
-//           <td>Kaixing</td>
-//           <td>3</td>
-//           <td>100%</td>
-//           <td>3</td>
-//           <td>0</td>
-//         </tr>
-//         <tr>
-//           <td>Kaixing</td>
-//           <td>3</td>
-//           <td>100%</td>
-//           <td>3</td>
-//           <td>0</td>
-//         </tr>
-//       </tbody>
-// `;

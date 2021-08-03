@@ -134,7 +134,7 @@ const display = {
       .map((player, index) => {
         return `
       <li>
-      <span class="indexBar">${index + 1}st</span>
+      <span class="indexBar rank${index}" >${index + 1}st</span>
       <span>${player.name}</span>
       <span>${player.score}</span>
       </li>
@@ -164,6 +164,8 @@ const winDeclaration = () => {
       game.computeScore(winner, undefined, fan, true);
     }
     if (discard) {
+      // prevent loser not seleted if win method is from discard
+      if (loser === "self") return;
       game.computeScore(winner, loser, fan);
     }
     // prevent submit the same result for more than once

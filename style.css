@@ -109,3 +109,16 @@ button {
   background-color: red;
   color: #ffffff;
 }
+
+.rank1 {
+  background-color: #e3e3e3;
+}
+
+.rank2 {
+  background-color: #964b00;
+  color: #ffffff;
+}
+
+.rank3 {
+  background-color: #ffffff;
+}

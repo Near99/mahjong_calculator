@@ -183,8 +183,8 @@ const winDeclaration = () => {
     const fan = Number(Object.values(winForm)[4].value);
     // prevent both self and from discard are checked at the same time.
     if (self === discard) return;
-    // prevent if winner and loser are selected the same.
-    if (winner === loser) return;
+    // prevent if winner and loser are selected the same, or winner is unselected.
+    if (winner === loser || winner === "unselected") return;
     if (self) {
       game.computeScore(winner, undefined, fan, true);
     }
@@ -196,6 +196,8 @@ const winDeclaration = () => {
     // set checkboxes to be unchecked
     Object.values(winForm)[0].checked = false;
     Object.values(winForm)[1].checked = false;
+    // set winner to unselected
+    Object.values(winForm)[2].value = "unselected";
     // set loser selector to self
     Object.values(winForm)[3].value = "self";
     // prevent submit the same result for more than once

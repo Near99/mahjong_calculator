@@ -170,7 +170,7 @@ const display = {
   },
 };
 
-const winDeclaration = () => {
+const winDeclaration = (() => {
   const winForm = document.querySelector(".win");
 
   winForm.addEventListener("submit", (e) => {
@@ -205,18 +205,16 @@ const winDeclaration = () => {
     // render data
     display.renderData();
   });
-};
+})();
 
-const reset = () => {
+const reset = (() => {
   const resetBut = document.querySelector(".reset");
   resetBut.addEventListener("touchstart", () => {
     storeData.removeData();
   });
-};
+})();
 
 window.addEventListener("DOMContentLoaded", () => {
   storeData.getData();
   display.renderData();
-  winDeclaration();
-  reset();
 });

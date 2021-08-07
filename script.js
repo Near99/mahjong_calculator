@@ -56,7 +56,7 @@ const game = {
     },
     {
       id: "p2",
-      name: "wenwen",
+      name: "zhanzhan",
       score: 0,
       win: 0,
       winRate: 0,

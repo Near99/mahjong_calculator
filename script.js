@@ -145,6 +145,10 @@ const game = {
     this.sorting();
   },
 
+  draw() {
+    this.sorting();
+  },
+
   // winning method controller
   computeScore(winner, loser, fan, isSelfDraw = false) {
     isSelfDraw
@@ -157,6 +161,7 @@ const game = {
 const display = {
   playerRanking: document.querySelector(".ranking"),
   tableBody: document.querySelector(".tableBody"),
+  currentRound: document.querySelector("#currentRound"),
 
   renderData() {
     const uls = game.playerInfo
@@ -185,6 +190,7 @@ const display = {
       .join("");
     this.playerRanking.innerHTML = uls;
     this.tableBody.innerHTML = tables;
+    this.currentRound.innerText = game.roundCounter;
   },
 };
 
@@ -206,12 +212,14 @@ const winDeclaration = (() => {
     // prevent if winner and loser are selected the same, or winner is unselected.
     if (winner === loser || winner === "unselected") return;
     // call computeScore accordingly if passes prior checkings;
-    if (self) game.computeScore(winner, undefined, fan, true);
+    if (self && winner !== "draw")
+      game.computeScore(winner, undefined, fan, true);
     if (discard) {
       // prevent loser not seleted if win method is from discard
       if (loser === "self") return;
       game.computeScore(winner, loser, fan);
     }
+    if (winner === "draw") game.draw();
     // reset all values to default to prevent miss toucing
     Object.values(winForm)[0].checked = false;
     Object.values(winForm)[1].checked = false;

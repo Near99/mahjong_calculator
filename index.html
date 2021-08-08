@@ -24,6 +24,7 @@
       <label for="winner">Choose Winner</label>
       <select id="winner" name="winner">
         <option value="unselected">Please Choose A Winner</option>
+        <option value="draw">Draw</option>
         <option value="p1">Kaixing</option>
         <option value="p2">Wenwen</option>
         <option value="p3">Yuhao</option>
@@ -48,7 +49,9 @@
       <button>Submit</button>
     </form>
 
-    <div class="rankingFormHeader">Details</div>
+    <div class="rankingFormHeader">
+      Details and Round: <span id="currentRound"></span>
+    </div>
     <table class="content-table">
       <thead>
         <tr>

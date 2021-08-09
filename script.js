@@ -124,7 +124,6 @@ const game = {
         player.score -= fan + 8;
       }
     });
-    this.sorting();
   },
 
   // calculating for winning from player's discard
@@ -142,11 +141,6 @@ const game = {
         player.score -= 8;
       }
     });
-    this.sorting();
-  },
-
-  draw() {
-    this.sorting();
   },
 
   // winning method controller
@@ -219,13 +213,14 @@ const winDeclaration = (() => {
       if (loser === "self") return;
       game.computeScore(winner, loser, fan);
     }
-    if (winner === "draw") game.draw();
     // reset all values to default to prevent miss toucing
     Object.values(winForm)[0].checked = false;
     Object.values(winForm)[1].checked = false;
     Object.values(winForm)[2].value = "unselected";
     Object.values(winForm)[3].value = "self";
     Object.values(winForm)[4].value = "";
+    // sorting
+    game.sorting();
     // update screen
     display.renderData();
   });

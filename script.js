@@ -184,7 +184,7 @@ const display = {
       .join("");
     this.playerRanking.innerHTML = uls;
     this.tableBody.innerHTML = tables;
-    this.currentRound.innerText = game.roundCounter;
+    this.currentRound.innerText = `${game.roundCounter + 1}`;
   },
 };
 

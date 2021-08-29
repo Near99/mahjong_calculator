@@ -233,7 +233,7 @@ const reset = (() => {
   });
 })();
 
-// load stored data and render to screen when page load
+// load data and render to screen on page load
 window.addEventListener("DOMContentLoaded", () => {
   storeData.getData();
   display.renderData();
